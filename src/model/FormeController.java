@@ -1,9 +1,17 @@
 
 package model;
 
+import com.itextpdf.text.*;
+import com.itextpdf.text.pdf.PdfPCell;
+import com.itextpdf.text.pdf.PdfPTable;
+import com.itextpdf.text.pdf.PdfWriter;
 import controller.Article;
 import controller.Connections;
 import controller.Model;
+import java.awt.Desktop;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.*;
@@ -181,7 +189,81 @@ public class FormeController implements Initializable {
     private void getRefresh(ActionEvent event) {
         selecte();
     }
-    
+
+    @FXML
+    private void getImprimer(ActionEvent event) {
+          Article article = tableaux.getSelectionModel().getSelectedItem();
+         String page = "/vue/Formulaire";
+        if (article == null) {
+               JOptionPane.showMessageDialog(null,"veuillez choisir une conlonne");
+                 return;
+        }
+        else {
+         try {
+            String chemin = "Facture.pdf";
+            Document doc = new  Document();
+            PdfWriter.getInstance(doc, new FileOutputStream(chemin));
+            doc.open();
+            Paragraph par = new Paragraph("ETABLISEMENT NATHAN");
+            doc.add(par);
+            doc.add(new Paragraph("-------------------------------------"));
+            
+            doc.add(new Paragraph(" "));
+            doc.add(new Paragraph(" "));
+            doc.add(new Paragraph("NOM du produit :" + article.getNom()));
+            doc.add(new Paragraph(" "));
+                 doc.add(new Paragraph("-------------------------------------"));
+            doc.add(new Paragraph("\t\t\t prix du produit :  " + article.getPrix()));
+            doc.add(new Paragraph(" "));
+                 doc.add(new Paragraph("-------------------------------------"));
+            doc.add(new Paragraph("\t\t\t code : "+article.getCode()));
+            doc.add(new Paragraph(" "));
+                 doc.add(new Paragraph("-------------------------------------"));
+            doc.add(new Paragraph("\t\t\t Amballage : "+article.getAmballage()));
+            
+//            PdfPTable tables = new PdfPTable(3);
+//            PdfPCell cel = new PdfPCell(new Phrase("CODE",FontFactory.getFont("Comic Sans MS",12)));
+//              cel.setHorizontalAlignment(Element.ALIGN_CENTER);
+//              cel.setBackgroundColor(BaseColor.ORANGE);
+//              tables.addCell(cel);
+//              
+//             PdfPCell cel1 = new PdfPCell(new Phrase("NOM_PRODUIT",FontFactory.getFont("Comic Sans MS",12)));
+//              cel.setHorizontalAlignment(Element.ALIGN_CENTER);
+//              cel.setBackgroundColor(BaseColor.ORANGE);
+//              tables.addCell(cel1);
+//             PdfPCell cel2 = new PdfPCell(new Phrase("PRIX",FontFactory.getFont("Comic Sans MS",12)));
+//              cel.setHorizontalAlignment(Element.ALIGN_CENTER);
+//              cel.setBackgroundColor(BaseColor.ORANGE);
+//              tables.addCell(cel2);
+//              PdfPCell cel3 = new PdfPCell(new Phrase("AMBALLAGE",FontFactory.getFont("Comic Sans MS",12)));
+//              cel.setHorizontalAlignment(Element.ALIGN_CENTER);
+//              cel.setBackgroundColor(BaseColor.ORANGE);
+//              tables.addCell(cel3);
+//              
+//              tables.setHeaderRows(1);
+//              tables.setWidthPercentage(100);
+//            
+//               tables.addCell(article.getCode());
+//              tables.addCell(article.getNom());
+//              tables.addCell(""+article.getPrix());
+//              tables.addCell(article.getAmballage());
+//              
+               
+             doc.close();
+             Desktop.getDesktop().open(new File(chemin));
+        }
+        catch (FileNotFoundException ex) {
+            Logger.getLogger(FormeController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        catch (DocumentException ex) {
+            Logger.getLogger(FormeController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        catch (IOException ex) {
+            Logger.getLogger(FormeController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+        
+    }
    
 
 }
