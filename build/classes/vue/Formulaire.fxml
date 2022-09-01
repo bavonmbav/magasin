@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+
+<VBox fx:id="parent" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="331.0" prefWidth="337.0" stylesheets="@steel.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="model.FormulaireController">
+   <children>
+      <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Formulairre" VBox.vgrow="ALWAYS">
+         <font>
+            <Font name="Bodoni MT Bold" size="18.0" />
+         </font>
+         <VBox.margin>
+            <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+         </VBox.margin>
+      </Text>
+      <TextField fx:id="code" alignment="CENTER" promptText="code" style="-fx-background-color: #53596f;" styleClass="text-field" stylesheets="@steel.css">
+         <VBox.margin>
+            <Insets left="10.0" right="10.0" top="10.0" />
+         </VBox.margin>
+      </TextField>
+      <TextField fx:id="Nom_produit" alignment="CENTER" promptText="Nom_produit" style="-fx-background-color: #53596f;" styleClass="text-field" stylesheets="@steel.css">
+         <VBox.margin>
+            <Insets left="10.0" right="10.0" top="10.0" />
+         </VBox.margin>
+      </TextField>
+      <TextField fx:id="Prix" alignment="CENTER" promptText="Prix" style="-fx-background-color: #53596f;" styleClass="text-field" stylesheets="@steel.css">
+         <VBox.margin>
+            <Insets left="10.0" right="10.0" top="10.0" />
+         </VBox.margin>
+      </TextField>
+      <TextField fx:id="Amballage" alignment="CENTER" promptText="Amballage" style="-fx-background-color: #53596f;" styleClass="text-field" stylesheets="@steel.css">
+         <VBox.margin>
+            <Insets left="10.0" right="10.0" top="10.0" />
+         </VBox.margin>
+      </TextField>
+      <HBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity">
+         <children>
+            <Button mnemonicParsing="false" onAction="#getAdds" text="ADD" textFill="WHITE" HBox.hgrow="ALWAYS">
+               <HBox.margin>
+                  <Insets left="60.0" />
+               </HBox.margin>
+            </Button>
+            <Button mnemonicParsing="false" onAction="#getCancel" text="Cancel" textFill="WHITE">
+               <HBox.margin>
+                  <Insets left="60.0" />
+               </HBox.margin>
+            </Button>
+         </children>
+         <VBox.margin>
+            <Insets top="10.0" />
+         </VBox.margin>
+      </HBox>
+   </children>
+   <padding>
+      <Insets top="30.0" />
+   </padding>
+</VBox>
